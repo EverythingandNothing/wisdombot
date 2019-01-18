@@ -50,8 +50,16 @@ apophthegms <- trimws(apophthegms)
 
 cleanedtext <- apophthegms
 
+# the lemmatization function requires the text to be in a .txt file encoded in UTF-8
+
+Encoding(cleanedtext) <- "UTF-8"
+
+write.table(cleanedtext, file = "cleanedtext.txt",sep = "")
+
 
 print("cleaned")
+
+#measure time it took 
 
 end <- Sys.time()
 
