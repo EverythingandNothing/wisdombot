@@ -37,7 +37,7 @@ print("imported")
 # this should be abstracted to a function that takes url, start and end strings as inputs and cuts down to that
 apophthegms <- bge[83:207]
 
-#each sentence begins w/ "\n    " so gonna take that out
+#each sentence begins w/ "\n    " so gonna take that out, take out punctuation and digits and whitespace
 apophthegms <- gsub("\n","",apophthegms)
 
 apophthegms <- gsub('[[:punct:] ]+',' ',apophthegms)
@@ -48,7 +48,15 @@ apophthegms <- tolower(apophthegms)
 
 apophthegms <- trimws(apophthegms)
 
+#create cleaned text 
+
 cleanedtext <- apophthegms
+
+#create cleaned words and then remove stop words
+
+cleanedwords <- unlist(strsplit(apophthegms,split = " "))
+
+#cleanedwords <- 
 
 # the lemmatization function requires the text to be in a .txt file encoded in UTF-8
 
