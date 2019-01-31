@@ -57,6 +57,8 @@ cleanedtext <- apophthegms
 
 #create cleaned words and then remove stop words
 
+
+
 stopwords_regex = paste(stopwords('en'), collapse = '\\b|\\b')
 stopwords_regex = paste0('\\b', stopwords_regex, '\\b')
 
@@ -74,14 +76,14 @@ cat(wordcountbefore-wordcountafter," words (",pctremoved,"%) were removed. ",wor
 
 # the lemmatization function requires the text to be in a .txt file encoded in UTF-8
 
-textfile <- "cleanedtext.txt"
-wordfile <- "cleanedwords.txt"
+filenametext <- "cleanedtext.txt"
+filenamewords <- "cleanedwords.txt"
 
 Encoding(cleanedtext) <- "UTF-8"
 Encoding(cleanedwords) <- "UTF-8"
 
-write.table(cleanedtext, file = textfile,sep = "")
-write.table(cleanedwords, file = wordfile,sep = "")
+write.table(cleanedtext, file = filenametext,sep = "")
+write.table(cleanedwords, file = filenamewords,sep = "")
 
 
 
