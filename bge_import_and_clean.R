@@ -1,5 +1,6 @@
 
 # IMPORT AND CLEANING
+#known improvement is that i need to suppress all the code and just show the logs
 
 
 start<-Sys.time()
@@ -26,7 +27,7 @@ webpage <- read_html(url)
 
 bge <- webpage %>% html_nodes("p") %>% html_text()  
 
-bge <- iconv(bge, "latin1", "ASCII", sub="")
+bge <- iconv(bge, "latin1", "ASCII", sub=" ")
 
 print("import finished.")
 
@@ -40,15 +41,15 @@ print("import finished.")
 apophthegms <- bge[83:207]
 
 #each sentence begins w/ "\n    " so gonna take that out, take out punctuation and digits and whitespace
-apophthegms <- gsub("\n","",apophthegms)
+apophthegms <- gsub("\n"," ",apophthegms)
 
 apophthegms <- gsub('[[:punct:] ]+',' ',apophthegms)
 
-apophthegms <- gsub('[[:digit:]]+', '', apophthegms)
+apophthegms <- gsub('[[:digit:]]+', ' ', apophthegms)
 
 apophthegms <- tolower(apophthegms)
 
-apophthegms <- trimws(apophthegms)
+apophthegms <- trimws(apophthegms, which = c("right"))
 
 #create cleaned text 
 
@@ -73,12 +74,18 @@ cat(wordcountbefore-wordcountafter," words (",pctremoved,"%) were removed. ",wor
 
 # the lemmatization function requires the text to be in a .txt file encoded in UTF-8
 
+textfile <- "cleanedtext.txt"
+wordfile <- "cleanedwords.txt"
+
 Encoding(cleanedtext) <- "UTF-8"
+Encoding(cleanedwords) <- "UTF-8"
 
-write.table(cleanedtext, file = "cleanedtext.txt",sep = "")
+write.table(cleanedtext, file = textfile,sep = "")
+write.table(cleanedwords, file = wordfile,sep = "")
 
 
-print("text has been cleaned and saved as cleanedtext.txt")
+
+print("text and words have been cleaned and saved as .txt")
 
 #measure time it took 
 
