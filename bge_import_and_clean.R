@@ -49,6 +49,11 @@ apophthegms <- gsub('[[:punct:] ]+',' ',apophthegms)
 
 apophthegms <- gsub('[[:digit:]]+', ' ', apophthegms)
 
+
+apophthegms <- gsub('ones', 'your', apophthegms)
+
+apophthegms <- gsub('one', 'you', apophthegms)
+
 apophthegms <- tolower(apophthegms)
 
 apophthegms <- trimws(apophthegms, which = c("right"))
