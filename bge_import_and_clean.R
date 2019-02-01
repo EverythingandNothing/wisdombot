@@ -43,6 +43,8 @@ apophthegms <- bge[83:207]
 #each sentence begins w/ "\n    " so gonna take that out, take out punctuation and digits and whitespace
 apophthegms <- gsub("\n"," ",apophthegms)
 
+apophthegms <- gsub('\'','',apophthegms)
+
 apophthegms <- gsub('[[:punct:] ]+',' ',apophthegms)
 
 apophthegms <- gsub('[[:digit:]]+', ' ', apophthegms)
