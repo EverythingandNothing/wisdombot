@@ -8,6 +8,9 @@ start<-Sys.time()
 print("starting random sentence creation")
 
 
+#helper function used in next function. 
+# input is a POS, function returns a word that matches that POS
+
 returnPOS <- function(POS){
   
   num <- length(subset(dfwords$words,dfwords$POS==POS))
@@ -19,6 +22,7 @@ returnPOS <- function(POS){
 }
 
 
+# function selects a sentence strucutre and fills it in w/ random words 
 
 generateRandSentence <- function(){
   
