@@ -41,7 +41,7 @@ print("import finished.")
 apophthegms <- bge[83:207]
 
 #each sentence begins w/ "\n    " so gonna take that out, take out punctuation and digits and whitespace
-apophthegms <- gsub("\n"," ",apophthegms)
+apophthegms <- gsub("\n"," ",apophthegms) 
 
 apophthegms <- gsub('\'','',apophthegms)
 
