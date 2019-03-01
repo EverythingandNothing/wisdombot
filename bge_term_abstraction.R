@@ -44,6 +44,10 @@ print("tagging parts of speech")
 
 listtext <- list("text" = cleanedtext)
 
+sent_token_annotator <- Maxent_Sent_Token_Annotator ()
+word_token_annotator <- Maxent_Word_Token_Annotator ()
+pos_tag_annotator <- Maxent_POS_Tag_Annotator ()
+
 #function takes a character vector as an input and outputs a list of the POS
 tagPOS <- function(x){
   
@@ -56,7 +60,7 @@ tagPOS <- function(x){
 
 #applies the tag function to the text 
 for (i in 1:length(listtext$text)){
-  listtext$POS[i] <- tag(listtext$text[[i]])
+  listtext$POS[i] <- tagPOS(listtext$text[[i]])
 }
 
 
